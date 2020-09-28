@@ -1,36 +1,13 @@
-
 $(function() {
   "use strict";
-  var num = 24;
+  var num = 24, i;
   var $elem = $("section.box");
-  var i;
+  var pic = 'https://drive.google.com/uc?export=download&id=1Jjr83n8VsO99oc20bj0TH46GETEuCmWV';
   for(i=1;i <= num; i++) {
-    $elem.append($("<figure/>", {
-      "id": "f" + i + "",
-      "class": "fig",
-    }));
-    var imm = "";
-    if(i<=12){
-      imm = i;
-    }else{
-      imm = i-12;}
+    $elem.append($("<figure/>", {"id": "f" + i + "", "class": "fig",}));
     var $figure = $("#f" + i + "");
-    $figure.append($('<img src="bf'+ imm +'.gif" id="m'+ i +'" class="im"/>'));
+    $figure.append($('<img src="'+pic+'" id="m'+ i +'" class="im"/>'));
     var id = "#m"+i+"";
-
-    $(id).css({
-      "Transform": "rotateZ("+ (i-1)*30 + "deg) translateZ(" + -Math.abs((i-1) * 600) + "px)"
-       });
-
-    /*
-      var filro = "";
-    if(i<12){
-      filro = i*30;
-    }else{filro = (i-12)*30;}
-     $(id).css({
-      "Transform": "rotateZ("+ (i-1)*30 + "deg) translateZ(" + -Math.abs((i-1) * 600) + "px)",
-       "-webkit-filter": "hue-rotate("+filro+"deg)"});*/
-
-  }
-
-});
+    $(id).css("-webkit-filter", "hue-rotate("+(360/12)*i+"deg)");
+    $(id).css({"Transform": "rotateZ("+ (i-1)*30 + "deg) translateZ(" + -Math.abs((i-1) * 600) + "px)"});
+  }});
