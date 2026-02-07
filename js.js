@@ -1,13 +1,40 @@
-$(function() {
+
+(function() {
   "use strict";
-  var num = 24, i;
-  var $elem = $("section.box");
-  var pic = 'https://drive.google.com/uc?export=download&id=1Jjr83n8VsO99oc20bj0TH46GETEuCmWV';
-  for(i=1;i <= num; i++) {
-    $elem.append($("<figure/>", {"id": "f" + i + "", "class": "fig",}));
-    var $figure = $("#f" + i + "");
-    $figure.append($('<img src="'+pic+'" id="m'+ i +'" class="im"/>'));
-    var id = "#m"+i+"";
-    $(id).css("-webkit-filter", "hue-rotate("+(360/12)*i+"deg)");
-    $(id).css({"Transform": "rotateZ("+ (i-1)*30 + "deg) translateZ(" + -Math.abs((i-1) * 600) + "px)"});
-  }});
+  
+  const num = 24;
+  const container = document.querySelector("section.box");
+  const pic = 'bf1.gif';
+  
+  // Create document fragment for batch DOM insertion
+  const fragment = document.createDocumentFragment();
+  
+  for(let i = 1; i <= num; i++) {
+    const hueRotation = (360/12) * i;
+    const rotationZ = (i-1) * 30;
+    const translateZ = -Math.abs((i-1) * 600);
+    
+    // Create figure element
+    const figure = document.createElement("figure");
+    figure.id = "f" + i;
+    figure.className = "fig";
+    
+    // Create image element
+    const img = document.createElement("img");
+    img.src = pic;
+    img.id = "m" + i;
+    img.className = "im";
+    
+    // Apply styles efficiently
+    img.style.cssText = `
+      -webkit-filter: hue-rotate(${hueRotation}deg);
+      transform: rotateZ(${rotationZ}deg) translateZ(${translateZ}px);
+    `;
+    
+    figure.appendChild(img);
+    fragment.appendChild(figure);
+  }
+  
+  // Single DOM insertion
+  container.appendChild(fragment);
+})();

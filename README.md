@@ -2,7 +2,7 @@
 
 A mesmerizing 3D animation project featuring a rotating helix of color-shifted butterfly images. This was created while I was learning JavaScript and experimenting with CSS 3D transforms and animations.
 
-![Demo](bf1.gif)
+![Demo](Screenshot.png)
 
 ## What It Does
 
@@ -56,3 +56,5 @@ It was a great way to learn about:
 ---
 
 *A fun experimental project exploring 3D CSS animations and JavaScript!*
+
+![Demo](bf1.gif)
